@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"strconv"
 )
 
 func main() {
@@ -14,6 +15,8 @@ func main() {
 		log.Printf("Prev. hash: %x\n", block.PreBlockHash)
 		log.Printf("Data: %s\n", block.Data)
 		log.Printf("Hash: %x\n", block.Hash)
-		log.Println()
+		pow := NewProofOfWork(block)
+		log.Printf("PoW: %s\n", strconv.FormatBool(pow.Validate()))
+		log.Println("\n\n")
 	}
 }
